@@ -15,7 +15,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -77,10 +76,9 @@ public class ChatController {
     @GetMapping("/user")
     public List<UserDTO> getUsersList() {
         ArrayList<UserDTO> users = new ArrayList<>();
-        userService.getUsers().stream()
-                .forEach(user -> {
-                    users.add(UserMapper.map(user));
-                });
+        userService.getUsers().forEach(user -> {
+            users.add(UserMapper.map(user));
+        });
         return users;
     }
 }
